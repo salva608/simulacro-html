@@ -1,0 +1,409 @@
+html {
+    height: 100%;
+    width: 100%;
+    background-image: url(/Asetts/Icons/Boff.gif);
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body{
+    margin-left: 20%;
+    margin-right: 20%;
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: 100% 10%;
+    background-color: rgba(0, 0, 0, 0.579);
+    padding-bottom: 100px;
+    border-left: 10px solid rgba(255, 255, 255, 0.2);
+    border-right: 10px solid rgba(255, 255, 255, 0.2);
+}
+
+nav{
+    display: flex;  
+    align-items: center;
+    justify-content:space-evenly;
+    text-decoration: none;
+
+}
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.RowIcons{
+    display: flex;
+    justify-content: space-around;
+    height: 100px;
+}
+
+.Sombreado{
+  animation: shadowRotate 6s infinite;
+}
+
+.Sombreado:hover{
+  animation: Rotate 2s infinite;
+}
+
+@keyframes Rotate{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+    filter: drop-shadow(3px -5px 10px rgb(255, 255, 255));
+  }
+}
+
+
+.rainbow {
+  font-family: "Gochi Hand", cursive;
+  text-align: center;
+  text-decoration: underline;
+  text-shadow: #ffffff;
+  font-size: 500%;
+  letter-spacing: 5px;
+  animation: colorRotate 6s infinite;
+}
+
+a{  
+    text-decoration: none;
+    color: aliceblue;
+    }
+    a:hover{
+        animation: colorRotate 1s linear 0s infinite;
+    }
+
+p {
+  color: aliceblue;
+  font-family: "Gochi Hand", cursive;
+  font-size: 200%;
+  text-align: center;
+}
+
+h2 {
+color: aliceblue;
+  font-family: "gochi hand", cursive;
+  text-align: center;
+  font-size: 300%;
+  margin-top: 20px;
+  text-decoration: underline;
+  animation: UnderlineRotate 6s infinite;
+}
+
+@keyframes UnderlineRotate {
+  0% {
+    color: #ffffff;
+    text-shadow: 0px 0px 3px #ffffff;
+    text-decoration-color: #ffffff;
+  }
+  10% {
+    text-shadow: 0px 0px 3px #ff8080;
+    text-decoration-color: #ff8080;
+  }
+  20% {
+    text-shadow: 0px 0px 3px #ff0000;
+    text-decoration-color: #ff0000;
+  }
+
+  30% {
+    text-shadow: 0px 0px 3px #fe3403;
+    text-decoration-color: #fe3403;
+  }
+  40% {
+    text-shadow: 0px 0px 3px #fd6906;
+    text-decoration-color: #fd6906;
+  }
+  50% {
+    text-shadow: 0px 0px 3px #80c21a;
+    text-decoration-color: #80c21a;
+  }
+  60% {
+    text-shadow: 0px 0px 3px #00ff22;
+    text-decoration-color: #00ff22;
+  }
+  70% {
+    text-shadow: 0px 0px 3px #00cc99;
+    text-decoration-color: #00cc99;
+  }
+  80% {
+    text-shadow: 0px 0px 3px #00ffff;
+    text-decoration-color: #00ffff;
+  }
+  90% {
+    text-shadow: 0px 0px 3px #0066cc;
+    text-decoration-color: #0066cc;
+  }
+  100% {
+    text-shadow: 0px 0px 3px #000000;
+    text-decoration-color: #6200ff;
+  }
+}
+
+@keyframes colorRotate {
+  0% {
+    color: #ffffff;
+    text-shadow: 0px 0px 3px #ffffff;
+  }
+  10% {
+    color: #ff8080;
+    text-shadow: 0px 0px 3px #ff8080;
+  }
+  20% {
+    color: #ff0000;
+    text-shadow: 0px 0px 3px #ff0000;
+  }
+  30% {
+    color: #fe3403;
+    text-shadow: 0px 0px 3px #fe3403;
+  }
+  40% {
+    color: #fd6906;
+    text-shadow: 0px 0px 3px #fd6906;
+  }
+  50% {
+    color: #80c21a;
+    text-shadow: 0px 0px 3px #80c21a;
+  }
+  60% {
+    color: #00ff22;
+    text-shadow: 0px 0px 3px #00ff22;
+  }
+  70% {
+    color: #00cc99;
+    text-shadow: 0px 0px 3px #00cc99;
+  }
+  80% {
+    color: #00ffff;
+    text-shadow: 0px 0px 3px #00ffff;
+  }
+  90% {
+    color: #0066cc;
+    text-shadow: 0px 0px 3px #0066cc;
+  }
+  100% {
+    color: #6200ff;
+    text-shadow: 0px 0px 3px #8400ff;
+  }
+}
+
+@keyframes shadowRotate {
+  0% {
+    filter: drop-shadow(10px 10px 10px rgba(255, 255, 255, 0));
+  }
+  10% {
+    filter: drop-shadow(5px 3px 10px rgb(255, 128, 128));
+  }
+  20% {
+    filter: drop-shadow(10px 7px 10px rgb(255, 0, 0));
+  }
+  30% {
+    filter: drop-shadow(10px 11px 10px rgb(255, 61, 0));
+  }
+  40% {
+    filter: drop-shadow(10px 15px 10px rgb(255, 123, 0));
+  }
+  50% {
+    filter: drop-shadow(0px 6px 10px rgb(128, 189, 17));
+  }
+  60% {
+    filter: drop-shadow(-10px -2px 10px rgb(0, 255, 34));
+  }
+  70% {
+    filter: drop-shadow(-3px -3px 10px rgb(0, 191, 255));
+  }
+  80% {
+    filter: drop-shadow(3px -5px 10px rgb(0, 255, 255));
+  }
+  90% {
+    filter: drop-shadow(14px 0px 10px rgb(0, 60, 255));
+  }
+  100% {
+    filter: drop-shadow(10px 10px 10px rgb(98, 0, 255));
+  }
+}
+
+section{
+  margin-top: 100px;
+}
+
+span{
+  font-size: 200%;
+}
+
+/* === Removing default button style ===*/
+.button {
+  margin-top: 10px  ;
+  height: auto;
+  background: rgba(0, 0, 0, 0.76);
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+/* button styling */
+.button {
+  --text-stroke-color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+
+/* this is the text, when you hover on button */
+.hover-text{
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  width: 0%;
+  inset: 0;
+  overflow: hidden;
+  transition: width 0.5s;
+  -webkit-text-stroke: 1px transparent;
+  animation: colorRotate 6s infinite;
+  border-right: 1px solid transparent; /* Borde inicial transparente */
+}
+
+/* hover */
+.button:hover .hover-text , .button:focus .hover-text {
+  width: 100%;
+  border-right-color: inherit; /* Hereda el color de la animación */
+  filter: drop-shadow(0 0 23px currentColor);
+}
+
+/* Contenedor del grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+/* Estilo de las tarjetas */
+.card {
+    background-color: rgb(0, 0, 0);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    animation: shadowRotate 1s infinite;
+}
+
+.card h2 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    color: #333;
+}
+.card p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1em;
+}
+
+form{
+  margin-top: 3%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Icons:hover{
+  animation: shadowRotate 5s infinite;
+}
+
+label {
+    font-family: "Gochi Hand", cursive;  
+    font-weight: bold;
+    font-size: 160%;
+    color: #ffffffab;
+    text-shadow: 0 0 5px #06e2ff, 0 0 10px #00ffff; /* Efecto neón */
+    padding-left: 3%;
+    padding-right: 0.6%;   
+    margin-top: 1%;
+    animation: colorRotate 1s infinite;
+}
+    input#email,
+    input#name {
+    font-family: "Gochi Hand", cursive;
+    font-weight: bold;
+    font-size: 160%;
+    margin-left:1.6%;
+    background: #00000094;
+    color: #ffffff;
+    margin-bottom: 0.2%;
+    }
+
+textarea {
+    font-family: "Gochi Hand", cursive;
+    font-weight: bold;
+    font-size: 160%;
+    margin-left:0.3%;
+    background: #00000094;
+    color: #f7f7f7;
+    margin-bottom: 0.2%;
+}
+
+input[type="submit"] {
+    font-family: "Gochi Hand", cursive;
+    font-weight: bold;
+    font-size: 160%;
+    background: rgba(0, 0, 0, 0.525);
+    color: #ffffff;
+    animation: coloRotate 1s infinite;
+    margin-top: 5%;
+    animation: shadowRotate 1s infinite ;
+}
+
+input[type="submit"]:hover {
+    animation: colorRotate 1s infinite;
+}
+
+@media (max-width:1000px){
+    span{
+    font-size: 75%;
+    }
+    p {
+    font-size: 90%;
+    margin-top: 1%;
+    }
+    .rainbow{ 
+        font-size: 230%;
+    }
+    h2 {
+        font-size: 200%;
+    }
+    img {
+        width: 50px;
+        height: 50px;
+        margin-top: 15%;
+    }
+    textarea{
+      max-width: 80%;
+    }
+    input#email,
+    input#name {
+      max-width: 80%;
+    }
+}
+
+.Icons{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5%;
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura Semántica HTML5</title>
+    <style>
+        /* Estilos para visualizar la estructura */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .code-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .tag {
+            display: inline-block;
+            margin: 5px 0;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .tag::before {
+            content: '<';
+            position: absolute;
+            left: 10px;
+            color: #666;
+        }
+        
+        .tag::after {
+            content: '>';
+            color: #666;
+        }
+        
+        .tag-html { background-color: #e74c3c; color: white; }
+        .tag-head { background-color: #3498db; color: white; margin-left: 20px; }
+        .tag-body { background-color: #2ecc71; color: white; margin-left: 20px; }
+        .tag-header { background-color: #9b59b6; color: white; margin-left: 40px; }
+        .tag-nav { background-color: #f39c12; color: white; margin-left: 40px; }
+        .tag-main { background-color: #1abc9c; color: white; margin-left: 40px; }
+        .tag-section { background-color: #d35400; color: white; margin-left: 60px; }
+        .tag-article { background-color: #34495e; color: white; margin-left: 80px; }
+        .tag-aside { background-color: #7f8c8d; color: white; margin-left: 60px; }
+        .tag-footer { background-color: #16a085; color: white; margin-left: 40px; }
+        
+        .indent { margin-left: 20px; }
+        .note {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .structure-diagram {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .structure-item {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .structure-item::before {
+            content: '▶';
+            position: absolute;
+            left: 10px;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .structure-item.open::before {
+            content: '▼';
+        }
+        
+        .nested {
+            margin-left: 30px;
+            display: none;
+        }
+        
+        .open + .nested {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Estructura Semántica HTML5</h1>
+    
+    <div class="note">
+        <p>Esta es una representación visual de la estructura semántica recomendada para documentos HTML5 modernos.</p>
+    </div>
+    
+    <div class="structure-diagram">
+        <div class="structure-item open" onclick="toggleNested(this)">
+            <span class="tag tag-html">!DOCTYPE html</span>
+            <div class="nested">
+                <div class="structure-item open" onclick="toggleNested(event)">
+                    <span class="tag tag-html">html</span>
+                    <div class="nested">
+                        <div class="structure-item" onclick="toggleNested(event)">
+                            <span class="tag tag-head">head</span>
+                            <div class="nested">
+                                <p style="margin: 10px 0 10px 30px; color: #666;">
+                                    (metadatos, título, enlaces a CSS/JS)
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="structure-item open" onclick="toggleNested(event)">
+                            <span class="tag tag-body">body</span>
+                            <div class="nested">
+                                <div class="structure-item" onclick="toggleNested(event)">
+                                    <span class="tag tag-header">header</span>
+                                    <div class="nested">
+                                        <p style="margin: 10px 0 10px 30px; color: #666;">
+                                            (logo, menú de navegación principal)
+                                        </p>
+                                        <div class="structure-item" onclick="toggleNested(event)">
+                                            <span class="tag tag-nav">nav</span>
+                                            <div class="nested">
+                                                <p style="margin: 10px 0 10px 30px; color: #666;">
+                                                    (enlaces de navegación)
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="structure-item open" onclick="toggleNested(event)">
+                                    <span class="tag tag-main">main</span>
+                                    <div class="nested">
+                                        <p style="margin: 10px 0 10px 30px; color: #666;">
+                                            (contenido principal único en la página)
+                                        </p>
+                                        
+                                        <div class="structure-item" onclick="toggleNested(event)">
+                                            <span class="tag tag-section">section</span>
+                                            <div class="nested">
+                                                <p style="margin: 10px 0 10px 30px; color: #666;">
+                                                    (agrupación temática de contenido)
+                                                </p>
+                                                
+                                                <div class="structure-item" onclick="toggleNested(event)">
+                                                    <span class="tag tag-article">article</span>
+                                                    <div class="nested">
+                                                        <p style="margin: 10px 0 10px 30px; color: #666;">
+                                                            (contenido independiente y autónomo)
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="structure-item" onclick="toggleNested(event)">
+                                    <span class="tag tag-aside">aside</span>
+                                    <div class="nested">
+                                        <p style="margin: 10px 0 10px 30px; color: #666;">
+                                            (contenido relacionado indirectamente)
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="structure-item" onclick="toggleNested(event)">
+                                    <span class="tag tag-footer">footer</span>
+                                    <div class="nested">
+                                        <p style="margin: 10px 0 10px 30px; color: #666;">
+                                            (información del pie de página)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="code-container">
+        <h2>Código de la estructura básica:</h2>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Título de la Página&lt;/title&gt;
+    &lt;link rel="stylesheet" href="estilos.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Encabezado de la Página&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;!-- Menú de navegación --&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Sección Principal&lt;/h2&gt;
+            &lt;article&gt;
+                &lt;h3&gt;Artículo 1&lt;/h3&gt;
+                &lt;p&gt;Contenido del artículo...&lt;/p&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+        
+        &lt;aside&gt;
+            &lt;h3>Contenido Relacionado&lt;/h3&gt;
+            &lt;!-- Contenido relacionado --&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;Derechos reservados &copy; 2023&lt;/p&gt;
+    &lt;/footer&gt;
+    
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+    
+    <div class="note">
+        <h3>¿Por qué usar elementos semánticos?</h3>
+        <ul>
+            <li>Mejoran la accesibilidad para usuarios con discapacidades</li>
+            <li>Facilitan el posicionamiento SEO</li>
+            <li>Hacen el código más legible y mantenible</li>
+            <li>Proporcionan una estructura clara a los motores de búsqueda</li>
+        </ul>
+    </div>
+    
+    <script>
+        // Función para mostrar/ocultar elementos anidados
+        function toggleNested(event) {
+            // Detener la propagación para que no se cierren los elementos padres
+            event.stopPropagation();
+            
+            // Obtener el elemento clickeado
+            const item = event.currentTarget;
+            
+            // Alternar la clase 'open' en el elemento clickeado
+            item.classList.toggle('open');
+            
+            // Si el elemento clickeado no tiene elementos anidados, no hacer nada más
+            const nested = item.querySelector('.nested');
+            if (!nested) return;
+            
+            // Si el elemento clickeado no es el body, prevenir el comportamiento por defecto
+            if (item.tagName !== 'BODY') {
+                event.preventDefault();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial de CSS Grid y Flexbox</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-th-large"></i> CSS Grid y Flexbox: Guía Completa</h1>
+        
+        <section class="intro">
+            <p>Bienvenido a esta guía completa sobre CSS Grid y Flexbox. Aprenderás los conceptos fundamentales, verás ejemplos prácticos y entenderás cuándo usar cada uno.</p>
+        </section>
+
+        <!-- Sección de comparación -->
+        <section class="example-section">
+            <h2><i class="fas fa-balance-scale"></i> Grid vs Flexbox: ¿Cuándo usar cada uno?</h2>
+            
+            <div class="comparison">
+                <div class="comparison-card">
+                    <div class="comparison-header" style="background-color: #3498db;">
+                        <h3>CSS Grid</h3>
+                    </div>
+                    <div class="comparison-content">
+                        <p><strong>Ideal para:</strong></p>
+                        <ul>
+                            <li>Diseños bidimensionales (filas y columnas)</li>
+                            <li>Diseños de página completos</li>
+                            <li>Elementos que necesitan alineación en ambos ejes</li>
+                            <li>Diseños con elementos de tamaño variable</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header" style="background-color: #f39c12;">
+                        <h3>Flexbox</h3>
+                    </div>
+                    <div class="comparison-content">
+                        <p><strong>Ideal para:</strong></p>
+                        <ul>
+                            <li>Diseños unidimensionales (fila O columna)</li>
+                            <li>Alinear elementos dentro de un contenedor</li>
+                            <li>Distribuir espacio entre elementos</li>
+                            <li>Diseños responsivos con elementos que fluyen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Grid -->
+        <section class="example-section">
+            <h2><i class="fas fa-th"></i> CSS Grid: Conceptos Básicos</h2>
+            
+            <div class="example">
+                <h3 class="example-title"><i class="fas fa-th-list"></i> Grid Básico</h3>
+                <p>Un contenedor grid organiza sus elementos secundarios en una cuadrícula.</p>
+                
+                <div class="controls">
+                    <button onclick="changeGridLayout('grid-template-columns', 'repeat(3, 1fr)')">3 columnas iguales</button>
+                    <button onclick="changeGridLayout('grid-template-columns', '1fr 2fr 1fr')">Columnas proporcionales</button>
+                    <button onclick="changeGridLayout('grid-template-columns', 'repeat(auto-fill, minmax(150px, 1fr))')">Auto-ajustable</button>
+                </div>
+                
+                <div class="grid-container" id="demoGrid">
+                    <div class="grid-item">1</div>
+                    <div class="grid-item">2</div>
+                    <div class="grid-item">3</div>
+                    <div class="grid-item">4</div>
+                    <div class="grid-item">5</div>
+                    <div class="grid-item">6</div>
+                </div>
+                
+                <div class="code-example">
+                    <pre><code><span class="comment">/* CSS */</span>
+<span class="selector">.grid-container</span> {
+    <span class="property">display</span>: <span class="value">grid</span>;
+    <span class="property">grid-template-columns</span>: <span class="value">repeat(3, 1fr)</span>;
+    <span class="property">gap</span>: <span class="value">15px</span>;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3 class="example-title"><i class="fas fa-border-all"></i> Áreas de Grid</h3>
+                <p>Puedes definir áreas con nombres para organizar tu layout.</p>
+                
+                <div class="grid-container" style="grid-template-areas: 
+                    'header header header'
+                    'sidebar main main'
+                    'footer footer footer';
+                    grid-template-rows: auto 1fr auto;
+                    height: 300px;">
+                    <div style="grid-area: header; background-color: #3498db;">Header</div>
+                    <div style="grid-area: sidebar; background-color: #2ecc71;">Sidebar</div>
+                    <div style="grid-area: main; background-color: #f1c40f;">Contenido Principal</div>
+                    <div style="grid-area: footer; background-color: #e74c3c;">Footer</div>
+                </div>
+                
+                <div class="code-example">
+                    <pre><code><span class="selector">.grid-container</span> {
+    <span class="property">display</span>: <span class="value">grid</span>;
+    <span class="property">grid-template-areas</span>: 
+        <span class="value">"header header header"
+        "sidebar main main"
+        "footer footer footer"</span>;
+    <span class="property">grid-template-columns</span>: <span class="value">1fr 2fr</span>;
+    <span class="property">grid-template-rows</span>: <span class="value">auto 1fr auto</span>;
+    <span class="property">height</span>: <span class="value">300px</span>;
+}
+
+<span class="selector">.header</span> { <span class="property">grid-area</span>: <span class="value">header</span>; }
+<span class="selector">.sidebar</span> { <span class="property">grid-area</span>: <span class="value">sidebar</span>; }
+<span class="selector">.main</span> { <span class="property">grid-area</span>: <span class="value">main</span>; }
+<span class="selector">.footer</span> { <span class="property">grid-area</span>: <span class="value">footer</span>; }</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Flexbox -->
+        <section class="example-section">
+            <h2><i class="fas fa-align-justify"></i> Flexbox: Conceptos Básicos</h2>
+            
+            <div class="example">
+                <h3 class="example-title"><i class="fas fa-arrows-alt-h"></i> Flexbox Básico</h3>
+                <p>Un contenedor flex organiza sus elementos en una sola dimensión (fila o columna).</p>
+                
+                <div class="controls">
+                    <button onclick="changeFlexDirection('row')">Fila (row)</button>
+                    <button onclick="changeFlexDirection('column')">Columna (column)</button>
+                    <button onclick="changeJustifyContent('space-between')">space-between</button>
+                    <button onclick="changeJustifyContent('center')">center</button>
+                </div>
+                
+                <div class="flex-container" id="demoFlex">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                    <div class="flex-item">4</div>
+                </div>
+                
+                <div class="code-example">
+                    <pre><code><span class="comment">/* CSS */</span>
+<span class="selector">.flex-container</span> {
+    <span class="property">display</span>: <span class="value">flex</span>;
+    <span class="property">gap</span>: <span class="value">15px</span>;
+    <span class="property">flex-direction</span>: <span class="value">row</span>;
+    <span class="property">justify-content</span>: <span class="value">flex-start</span>;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3 class="example-title"><i class="fas fa-arrows-alt-v"></i> Alineación en Flexbox</h3>
+                <p>Puedes controlar la alineación de los elementos en ambos ejes.</p>
+                
+                <div class="controls">
+                    <button onclick="changeAlignItems('stretch')">align-items: stretch</button>
+                    <button onclick="changeAlignItems('center')">align-items: center</button>
+                    <button onclick="changeFlexWrap('wrap')">flex-wrap: wrap</button>
+                </div>
+                
+                <div class="flex-container" id="flexAlign" style="min-height: 150px; align-items: stretch;">
+                    <div class="flex-item" style="height: auto;">1</div>
+                    <div class="flex-item" style="height: 60px;">2</div>
+                    <div class="flex-item" style="height: 80px;">3</div>
+                    <div class="flex-item" style="height: 40px;">4</div>
+                </div>
+                
+                <div class="code-example">
+                    <pre><code><span class="selector">.flex-container</span> {
+    <span class="property">display</span>: <span class="value">flex</span>;
+    <span class="property">align-items</span>: <span class="value">stretch</span>; <span class="comment">/* o center, flex-start, flex-end */</span>
+    <span class="property">flex-wrap</span>: <span class="value">nowrap</span>; <span class="comment">/* o wrap, wrap-reverse */</span>
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de combinación -->
+        <section class="example-section">
+            <h2><i class="fas fa-puzzle-piece"></i> Combinando Grid y Flexbox</h2>
+            <p>Lo mejor de ambos mundos: usa Grid para el diseño general de la página y Flexbox para los componentes internos.</p>
+            
+            <div class="example">
+                <h3 class="example-title"><i class="fas fa-sitemap"></i> Ejemplo de Layout Combinado</h3>
+                
+                <div class="grid-container" style="grid-template-columns: 250px 1fr; gap: 20px; min-height: 400px;">
+                    <!-- Sidebar con Flexbox -->
+                    <div style="background-color: #2c3e50; padding: 20px; border-radius: 6px;">
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="color: white; font-weight: bold; margin-bottom: 15px;">Menú</div>
+                            <button style="width: 100%; text-align: left; background: rgba(255,255,255,0.1);">Inicio</button>
+                            <button style="width: 100%; text-align: left; background: rgba(255,255,255,0.1);">Productos</button>
+                            <button style="width: 100%; text-align: left; background: rgba(255,255,255,0.1);">Servicios</button>
+                            <button style="width: 100%; text-align: left; background: rgba(255,255,255,0.1);">Contacto</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenido principal con Grid -->
+                    <div style="display: grid; gap: 20px; grid-template-rows: auto 1fr auto;">
+                        <div style="background-color: #e74c3c; padding: 15px; border-radius: 6px; color: white;">
+                            <h3 style="margin: 0; color: white;">Título de la Página</h3>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;">
+                            <div style="background: #f1c40f; padding: 15px; border-radius: 6px;">Tarjeta 1</div>
+                            <div style="background: #2ecc71; padding: 15px; border-radius: 6px;">Tarjeta 2</div>
+                            <div style="background: #9b59b6; padding: 15px; border-radius: 6px;">Tarjeta 3</div>
+                        </div>
+                        
+                        <div style="background-color: #34495e; padding: 15px; border-radius: 6px; color: white; text-align: center;">
+                            Pie de página
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+                    <pre><code><span class="comment">/* Layout principal con Grid */</span>
+<span class="selector">.page-layout</span> {
+    <span class="property">display</span>: <span class="value">grid</span>;
+    <span class="property">grid-template-columns</span>: <span class="value">250px 1fr</span>;
+    <span class="property">gap</span>: <span class="value">20px</span>;
+}
+
+<span class="comment">/* Sidebar con Flexbox */</span>
+<span class="selector">.sidebar</span> {
+    <span class="property">display</span>: <span class="value">flex</span>;
+    <span class="property">flex-direction</span>: <span class="value">column</span>;
+    <span class="property">gap</span>: <span class="value">10px</span>;
+}
+
+<span class="comment">/* Contenido principal con Grid */</span>
+<span class="selector">.content</span> {
+    <span class="property">display</span>: <span class="value">grid</span>;
+    <span class="property">grid-template-rows</span>: <span class="value">auto 1fr auto</span>;
+    <span class="property">gap</span>: <span class="value">20px</span>;
+}
+
+<span class="comment">/* Tarjetas con Grid */</span>
+<span class="selector">.cards</span> {
+    <span class="property">display</span>: <span class="value">grid</span>;
+    <span class="property">grid-template-columns</span>: <span class="value">repeat(auto-fill, minmax(200px, 1fr))</span>;
+    <span class="property">gap</span>: <span class="value">15px</span>;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de consejos finales -->
+        <section class="example-section">
+            <h2><i class="fas fa-lightbulb"></i> Consejos Prácticos</h2>
+            
+            <div class="tip">
+                <h4><i class="fas fa-check-circle"></i> ¿Grid o Flexbox?</h4>
+                <p>Usa <strong>Grid</strong> cuando necesites controlar el diseño en dos dimensiones (filas y columnas). Usa <strong>Flexbox</strong> cuando solo necesites controlar una dimensión (fila O columna).</p>
+            </div>
+            
+            <div class="note">
+                <h4><i class="fas fa-info-circle"></i> Compatibilidad</h4>
+                <p>Ambas tecnologías son compatibles con todos los navegadores modernos. Para soporte en navegadores antiguos, considera usar prefijos o un polyfill.</p>
+            </div>
+            
+            <div class="warning">
+                <h4><i class="fas fa-exclamation-triangle"></i> Consideraciones de rendimiento</h4>
+                <p>Para layouts muy grandes, Grid puede ser más eficiente que anidar múltiples contenedores flex. Sin embargo, en la mayoría de los casos, la diferencia es mínima.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Funciones para los ejemplos interactivos
+        function changeGridLayout(property, value) {
+            document.getElementById('demoGrid').style[property] = value;
+        }
+        
+        function changeFlexDirection(direction) {
+            document.getElementById('demoFlex').style.flexDirection = direction;
+            document.getElementById('flexAlign').style.flexDirection = direction;
+        }
+        
+        function changeJustifyContent(value) {
+            document.getElementById('demoFlex').style.justifyContent = value;
+        }
+        
+        function changeAlignItems(value) {
+            document.getElementById('flexAlign').style.alignItems = value;
+        }
+        
+        function changeFlexWrap(value) {
+            document.getElementById('flexAlign').style.flexWrap = value;
+        }
+    </script>
+</body>
+</html>
