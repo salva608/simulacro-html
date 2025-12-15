@@ -1,0 +1,41 @@
+* {
+     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+
+}
+
+.nav {
+    display: flex;
+    
+    align-items: center;
+}
+
+
+main {
+    flex: 1;
+}
+
+nav ul {
+    color: #ffff;
+    display: flex;
+
+}
+
+.logo img {
+    height: 40px;
+}
+
+header {
+    background-color: #eb4504;
+    padding: 2rem;
+    
+}
