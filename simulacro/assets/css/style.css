@@ -15,7 +15,7 @@ body {
 
 .nav {
     display: flex;
-    
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -27,15 +27,25 @@ main {
 nav ul {
     color: #ffff;
     display: flex;
+    gap: 1rem;
+    list-style: none;
+}
 
+nav a {
+    color: #ffff;
+    text-decoration: none;
 }
 
 .logo img {
     height: 40px;
+    margin-right: 4rem;
 }
 
 header {
-    background-color: #eb4504;
-    padding: 2rem;
-    
+    background: linear-gradient(135deg, #ff8f70 0%, #ff3d54 100%);
+    min-height: 500px;
+    gap: 2rem;
+    border-bottom-left-radius: 100px;
+    display: flex;
+    align-items: flex-start;
 }
