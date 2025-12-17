@@ -241,11 +241,12 @@ text-decoration: none;
     height: 700px;
     margin-right: -260px;
 }
+
 .blue-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 3rem;
-    background-color: #3b3c59;
+    background-color: #3b3c59 ;
     border-bottom-left-radius: 100px;
     border-top-right-radius: 100px;
     color: #ffff;
@@ -253,13 +254,15 @@ text-decoration: none;
     align-items: center;
     overflow: visible;  /* CAMBIA ESTO - permite que la imagen sobresalga */
     position: relative;  /* Para controlar el z-index si hace falta */
+    background-image: url(../img/bg-pattern-circles.svg);
+    background-repeat: no-repeat;
+    background-position: left -10.7rem top -33rem;
 }
 
 .img-2 {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;  /* Alinea la imagen abajo */
-    margin-left: -100px;
     margin-bottom: -700px;
     margin-top: -700px;  /* La imagen sale hacia ABAJO del contenedor */
 }
@@ -276,4 +279,63 @@ text-decoration: none;
 .blue-text h4 {
     font-size: 30px;
     margin-bottom: 2rem;
+}
+
+
+
+.description-section-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.description-section-2 h5 {
+    grid-column: 1 / -1; /* El h2 ocupa ambas columnas */
+    color: #2b2b5f;
+    text-align: center;
+    padding-top: 9rem;
+    font-size: 30px;
+    margin-bottom: 4rem;
+}
+
+.description-content-2 {
+    text-align: left;
+}
+
+.description-content-2 h5 {
+    color: #2b2b5f;
+    font-size: 25px;
+}
+
+.description-content-2 p {
+    color: #2b2b5f;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.content-row-2 {
+    grid-column: 1 / -1; 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;  /* AGREGA ESTO */
+    margin-bottom: 2rem; 
+
+}
+
+.text-column-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;  /* Espacio entre los dos textos */
+}
+
+.img-laptop {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.img-3 {
+    display: flex;
+    justify-content: flex-start;
+    height: 700px;
+    margin-left: -244px;
 }
