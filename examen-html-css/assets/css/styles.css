@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    overflow-x: hidden;
+    
+}
+
+main { 
+    flex: 1; /* El main ocupa todo el espacio disponible (empuja footer abajo) */
+}
+
+.logo img{
+    height: 24px;
+    width: 154px;
+    margin-left: 105px;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.menu { 
+    position: relative;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 3rem;
+    gap: 2rem;
+    margin-left: 350px;
+    
+}
+
+.menu a{
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+ 
+}
+
+.menu a:hover {
+    color: #388E3B;
+}
+
+.nav-login {
+    margin-left: 250px; /* Empuja los botones hacia la derecha */
+    display: flex; /* Activa flexbox para alinear los botones */
+    gap: 1rem; /* Espacio de 1rem entre botones */
+}
+
+.btn-login{
+    height: 50px; /* Altura fija de 50px para todos los botones */
+    width: 100px; /* Ancho base de 100px */
+    border-radius: 30px; /* Bordes muy redondeados (botón tipo píldora) */
+    font-weight: 700; /* Texto en negrita */
+    cursor: pointer; /* Cambia el cursor a pointer */
+    border: none; /* Sin borde por defecto */
+    transition: all 0.3s; /* Transición suave para todas las propiedades */
+    color: #388E3B;
+}
+
+.btn-login:hover {
+    color: #ffffff;
+    background-color: #388E3B;
+}
+
+.btn-signup{
+    height: 50px; /* Altura fija de 50px para todos los botones */
+    width: 100px; /* Ancho base de 100px */
+    border-radius: 30px; /* Bordes muy redondeados (botón tipo píldora) */
+    font-weight: 700; /* Texto en negrita */
+    cursor: pointer; /* Cambia el cursor a pointer */
+    border: none; /* Sin borde por defecto */
+    transition: all 0.3s; /* Transición suave para todas las propiedades */
+    color: #ffffff;
+    background-color: #388E3B;
+}
+
+.btn-signup:hover {
+    color: #ffffff;
+    transform: translateY(-10px);
+    
+}
+
+
+.hero {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    display: flex; /* Activa flexbox */
+    align-items: flex-start; /* Centra verticalmente el contenido */
+    justify-content: flex-start; /* Centra horizontalmente el contenido */
+    margin-left: 200px;
+    margin-top: 200px;
+}
+
+.hero-content {
+    text-align: center; /* Centra el texto */
+    margin-bottom: 10rem; /* Margen inferior de 10rem */
+}
+
+h1 {
+    font-size: 3rem; /* Tamaño de fuente de 3rem (48px aprox) */
+    font-weight: 600; /* Peso de fuente semi-negrita */
+    margin-bottom: 2rem; /* Margen inferior de 2rem */
+}
+
+.hero-content p {
+    font-size: 3rem; /* Tamaño de fuente de 1.2rem */
+    font-weight: 500;
+    margin-bottom: 2rem; /* Margen inferior de 2rem */
+    
+}
+
+.hero-buttons {
+    display: flex; /* Activa flexbox para alinear botones */
+    gap: 1rem; /* Espacio de 1rem entre botones */
+    justify-content: center; /* Centra los botones horizontalmente */
+}
