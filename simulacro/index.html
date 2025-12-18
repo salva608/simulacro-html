@@ -9,22 +9,68 @@
 <body>
     
     <header>
-        <nav class="nav">
-            <div class="logo">
-                <img src="assets/img/logo.svg" alt="imagen logo">
-            </div>
+      <nav class="nav">
+    <div class="logo">
+        <img src="assets/img/logo.svg" alt="imagen logo">
+    </div>
 
-            <ul>
-                <li><a href="product">Product</a></li>
-                <li><a href="company">Company</a></li>
-                <li><a href="connect">Connect</a></li>
+    <!-- CHECKBOX OCULTO PARA CONTROLAR EL MENÚ -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    
+    <!-- BOTÓN HAMBURGUESA (LABEL) -->
+    <label for="menu-toggle" class="hamburger">
+        <span class="hamburger-icon"></span>
+    </label>
+
+    <ul class="nav-menu">
+        <li class="dropdown">
+            <a href="#product">Product
+                <img src="assets/img/icon-arrow-light.svg" alt="" class="arrow-icon">
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#marketplace">Marketplace</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#integrations">Integrations</a></li>
             </ul>
+        </li>
+        
+        <li class="dropdown">
+            <a href="#company">Company
+                <img src="assets/img/icon-arrow-light.svg" alt="" class="arrow-icon">
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#careers">Careers</a></li>
+            </ul>
+        </li>
+        
+        <li class="dropdown">
+            <a href="#connect">Connect
+                <img src="assets/img/icon-arrow-light.svg" alt="" class="arrow-icon">
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#newsletter">Newsletter</a></li>
+                <li><a href="#linkedin">LinkedIn</a></li>
+            </ul>
+        </li>
 
-            <div class="nav-login">
-                <button class="btn-login">Login</button>
-                <button class="btn-signup">Sign Up</button>
-            </div>
-        </nav>
+        <!-- Botones dentro del menú móvil -->
+        <div class="nav-login-mobile">
+            <button class="btn-login">Login</button>
+            <button class="btn-signup">Sign Up</button>
+        </div>
+    </ul>
+
+    <div class="nav-login">
+        <button class="btn-login">Login</button>
+        <button class="btn-signup">Sign Up</button>
+    </div>
+</nav>
 
         <div class="hero">
             <div class="hero-content">
@@ -58,7 +104,7 @@
                         <h3>Robust content management</h3>
                         <p>Flexible content management enables users to easily move through posts. 
                         Increase the usability of your blog by adding customized categories, sections, format, or flow.
-                        With this functionality, you’re in full control.</p>
+                        With this functionality, you're in full control.</p>
                     </article>
                 </div>
 

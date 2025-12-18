@@ -1,342 +1,667 @@
-
+/* ==================== RESET Y BASE ==================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    height: 100%;
+    margin: 0; /* Elimina los márgenes por defecto de todos los elementos */
+    padding: 0; /* Elimina el padding por defecto de todos los elementos */
+    box-sizing: border-box; /* Hace que el ancho y alto incluyan padding y border */
 }
 
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(255, 255, 255);
-    margin: 0;
-    overflow-x: hidden;
+    min-height: 100vh; /* Altura mínima del body es 100% del viewport */
+    display: flex; /* Activa flexbox en el body */
+    flex-direction: column; /* Los elementos hijos se apilan verticalmente */
+    font-family: Arial, Helvetica, sans-serif; /* Define la fuente del sitio */
+    overflow-x: hidden; /* Oculta el scroll horizontal */
 }
 
+main { 
+    flex: 1; /* El main ocupa todo el espacio disponible (empuja footer abajo) */
+}
+
+ul { 
+    list-style: none; /* Elimina las viñetas de las listas */
+}
+
+a {
+    color: inherit; /* Los enlaces heredan el color del elemento padre */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+/* ==================== NAVEGACIÓN ==================== */
 .nav {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 3rem;
-}
-
-main {
-    flex: 1;
-}
-
-nav ul {
-    color: #ffff;
-    display: flex;
-    gap: 1rem;
-    list-style: none;
-}
-
-nav a {
-    color: #ffff;
-    text-decoration: none;
+    display: flex; /* Activa flexbox para alinear elementos horizontalmente */
+    align-items: center; /* Centra verticalmente los elementos del nav */
+    padding: 3rem; /* Espaciado interno de 3rem en todos los lados */
+    gap: 2rem; /* Espacio de 2rem entre elementos hijos */
+    position: relative; /* Posicionamiento relativo para elementos absolutos internos */
 }
 
 .logo img {
-    height: 40px;
-    margin-right: 4rem;
+    height: 40px; /* Altura fija del logo */
 }
 
-header {
-    background: linear-gradient(135deg, #ff8f70 0%, #ff3d54 100%);
-    min-height: 500px;
-    gap: 2rem;
-    border-bottom-left-radius: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* CHECKBOX OCULTO */
+.menu-toggle {
+    display: none; /* Oculta el checkbox (se usa solo para controlar el menú) */
+}
+
+/* BOTÓN HAMBURGUESA */
+.hamburger {
+    display: none; /* Oculto por defecto, se muestra en móvil */
+    flex-direction: column; /* Apila las líneas verticalmente */
+    cursor: pointer; /* Cambia el cursor a pointer al pasar sobre él */
+    z-index: 1001; /* Asegura que esté encima del menú */
+    margin-left: auto; /* Empuja el botón hacia la derecha */
+}
+
+.hamburger-icon {
+    width: 30px; /* Ancho de la línea del medio */
+    height: 3px; /* Grosor de la línea del medio */
+    background-color: white; /* Color blanco para la línea */
+    position: relative; /* Permite posicionar las líneas ::before y ::after */
+    transition: all 0.3s ease; /* Animación suave de 0.3s para todas las propiedades */
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: ''; /* Crea un pseudo-elemento vacío */
+    position: absolute; /* Posicionamiento absoluto respecto a .hamburger-icon */
+    width: 30px; /* Mismo ancho que la línea del medio */
+    height: 3px; /* Mismo grosor que la línea del medio */
+    background-color: white; /* Color blanco para las líneas */
+    transition: all 0.3s ease; /* Animación suave para la transformación */
+}
+
+.hamburger-icon::before {
+    top: -8px; /* Posiciona la línea superior 8px arriba */
+}
+
+.hamburger-icon::after {
+    top: 8px; /* Posiciona la línea inferior 8px abajo */
+}
+
+/* ANIMACIÓN DEL ÍCONO AL ABRIR */
+.menu-toggle:checked ~ .hamburger .hamburger-icon {
+    background-color: transparent; /* Oculta la línea del medio cuando está activo */
+}
+
+.menu-toggle:checked ~ .hamburger .hamburger-icon::before {
+    transform: rotate(45deg); /* Rota la línea superior 45 grados */
+    top: 0; /* Mueve la línea al centro */
+}
+
+.menu-toggle:checked ~ .hamburger .hamburger-icon::after {
+    transform: rotate(-45deg); /* Rota la línea inferior -45 grados */
+    top: 0; /* Mueve la línea al centro (forma una X) */
+}
+
+.nav-menu {
+    display: flex; /* Activa flexbox para alinear los items del menú */
+    gap: 2rem; /* Espacio de 2rem entre cada item del menú */
+}
+
+/* Botones de login móviles (ocultos por defecto) */
+.nav-login-mobile {
+    display: none; /* Ocultos en desktop, se muestran en móvil */
+}
+
+.dropdown { 
+    position: relative; /* Permite posicionar el menú desplegable de forma absoluta */
+}
+
+.dropdown > a {
+    color: #fff; /* Color blanco para los enlaces */
+    padding: 0.5rem 1rem; /* Espaciado interno vertical y horizontal */
+    display: flex; /* Activa flexbox para alinear texto e ícono */
+    align-items: center; /* Centra verticalmente el contenido */
+    gap: 0.5rem; /* Espacio entre el texto y el ícono de flecha */
+    transition: opacity 0.3s; /* Transición suave para el efecto hover */
+}
+
+.dropdown:hover > a { 
+    opacity: 0.8; /* Reduce la opacidad al 80% al hacer hover */
+}
+
+.dropdown-menu {
+    position: absolute; /* Posicionamiento absoluto respecto a .dropdown */
+    top: 100%; /* Se posiciona justo debajo del elemento padre */
+    left: 0; /* Alineado a la izquierda del elemento padre */
+    background: white; /* Fondo blanco para el menú desplegable */
+    border-radius: 8px; /* Bordes redondeados de 8px */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra suave para dar profundidad */
+    min-width: 180px; /* Ancho mínimo del menú desplegable */
+    padding: 1.5rem; /* Espaciado interno */
+    margin-top: 1rem; /* Espacio de 1rem desde el elemento padre */
+    opacity: 0; /* Invisible por defecto */
+    visibility: hidden; /* No visible por defecto */
+    transform: translateY(-10px); /* Desplazado 10px hacia arriba */
+    transition: all 0.3s; /* Transición suave para todas las propiedades */
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1; /* Totalmente visible al hacer hover */
+    visibility: visible; /* Hace visible el menú */
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+
+.dropdown-menu a {
+    color: #2b2b5f; /* Color azul oscuro para los enlaces del menú */
+    padding: 0.5rem 0; /* Espaciado vertical */
+    display: block; /* Hace que cada enlace ocupe todo el ancho */
+    transition: all 0.3s; /* Transición suave para el hover */
+}
+
+.dropdown-menu a:hover {
+    color: #ff8f70; /* Cambia a color naranja al hacer hover */
+    padding-left: 0.5rem; /* Añade padding izquierdo para efecto de desplazamiento */
 }
 
 .nav-login {
-    margin-left: auto;
-    display: flex;
-    gap: 1rem;
+    margin-left: auto; /* Empuja los botones hacia la derecha */
+    display: flex; /* Activa flexbox para alinear los botones */
+    gap: 1rem; /* Espacio de 1rem entre botones */
 }
 
-.btn-login {
-    background: transparent;
-    border: none;
-    height: 50px;
-    width: 100px;
-    border-radius: 30px;
-    color: #ffff;
-    cursor: pointer;
-    font-weight: 800;
+.btn-login, .btn-signup, .btn-star, .btn-learn {
+    height: 50px; /* Altura fija de 50px para todos los botones */
+    width: 100px; /* Ancho base de 100px */
+    border-radius: 30px; /* Bordes muy redondeados (botón tipo píldora) */
+    font-weight: 700; /* Texto en negrita */
+    cursor: pointer; /* Cambia el cursor a pointer */
+    border: none; /* Sin borde por defecto */
+    transition: all 0.3s; /* Transición suave para todas las propiedades */
 }
 
-.btn-signup {
-    background-color: hsl(0, 0%, 100%);
-    height: 50px;
-    width: 100px;
-    border-radius: 30px;
-    color: #ff8f70;
-    border: none;
-    font-weight: 800;
-    cursor: pointer;
+.btn-login, .btn-learn {
+    background: transparent; /* Fondo transparente */
+    color: #fff; /* Texto blanco */
+    border: 2px solid #fff; /* Borde blanco de 2px */
+}
+
+.btn-login:hover, .btn-learn:hover {
+    background: white; /* Fondo blanco al hacer hover */
+    color: #ff8f70; /* Texto naranja al hacer hover */
+}
+
+.btn-signup, .btn-star {
+    background: white; /* Fondo blanco */
+    color: #ff8f70; /* Texto naranja */
+    width: 150px; /* Ancho mayor de 150px */
+}
+
+.btn-signup:hover, .btn-star:hover {
+    background: #000; /* Fondo negro al hacer hover */
+    color: #fff; /* Texto blanco al hacer hover */
+}
+
+/* ==================== HEADER ==================== */
+header {
+    background: linear-gradient(135deg, #ff8f70, #ff3d54); /* Gradiente diagonal naranja a rojo */
+    min-height: 500px; /* Altura mínima de 500px */
+    border-bottom-left-radius: 100px; /* Borde redondeado en la esquina inferior izquierda */
+    display: flex; /* Activa flexbox */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    color: white; /* Color de texto blanco */
 }
 
 .hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
+    flex: 1; /* Ocupa todo el espacio disponible */
+    display: flex; /* Activa flexbox */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
 }
 
 .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 10rem;
-    gap: 2rem;
+    text-align: center; /* Centra el texto */
+    margin-bottom: 10rem; /* Margen inferior de 10rem */
 }
 
 h1 {
-    color: #ffffff;
-    font-size: 3rem;
-    font-weight: 600;
-    word-spacing: 0.5em;
+    font-size: 3rem; /* Tamaño de fuente de 3rem (48px aprox) */
+    font-weight: 600; /* Peso de fuente semi-negrita */
+    margin-bottom: 2rem; /* Margen inferior de 2rem */
 }
 
 .hero-content p {
-    color: #ffffff;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    font-size: 1.2rem; /* Tamaño de fuente de 1.2rem */
+    margin-bottom: 2rem; /* Margen inferior de 2rem */
 }
 
 .hero-buttons {
-    display: flex;
-    gap: 1rem;
+    display: flex; /* Activa flexbox para alinear botones */
+    gap: 1rem; /* Espacio de 1rem entre botones */
+    justify-content: center; /* Centra los botones horizontalmente */
 }
 
-.btn-star {
-    height: 50px;
-    width: 150px;
-    background-color: #ffff;
-    color: #ff8f70;
-    border-radius: 30px;
-    border: none;
-    font-weight: 700;
-    cursor: pointer;
-    padding: 0;
-}
-
-.btn-learn {
-    height: 50px;
-    width: 150px;
-    background-color: transparent;
-    color: #ffffff;
-    border-radius: 30px;
-    font-weight: 700;
-    border: 2px solid #ffffff;
-    cursor: pointer;
-    padding: 0;
-}
-
-footer {
-background-color: #25252d;
-padding: 4rem 3rem;
-color: white;
-border-top-right-radius: 100px;
-}
-
-.footer-content {
-display: flex;
-gap: 8rem;
-max-width: 1200px;
-}
-
-.footer-logo h2 {
-font-size: 2rem;
-font-weight: 700;
-}
-
-.footer-column h3 {
-color: white;
-margin-bottom: 2rem;
-font-size: 1.1rem;
-}
-
-.footer-column ul {
-list-style: none;
-}
-
-.footer-column li {
-margin-bottom: 0.8rem;
-}
-
-.footer-column a {
-color: #c4c4c4;
-text-decoration: none;
-}
-
-
-
-.description-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding:  3rem;
-
+/* ==================== SECCIONES ==================== */
+.description-section, .description-section-2 {
+    padding: 3rem; /* Espaciado interno de 3rem en todos los lados */
 }
 
 .description-section h2 {
-    grid-column: 1 / -1; /* El h2 ocupa ambas columnas */
-    color: #2b2b5f;
-    text-align: center;
-    padding-top: 9rem;
-    font-size: 30px;
-    margin-bottom: 4rem;
+    color: #2b2b5f; /* Color azul oscuro */
+    text-align: center; /* Centra el texto */
+    font-size: 30px; /* Tamaño de fuente de 30px */
+    margin: 9rem 0 4rem; /* Margen superior 9rem, inferior 4rem */
 }
 
-.description-content {
-    text-align: left;
+.content-row, .content-row-2 {
+    display: grid; /* Activa CSS Grid */
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: 2rem; /* Espacio de 2rem entre columnas */
+    align-items: center; /* Centra verticalmente los elementos del grid */
 }
 
-.description-content h3 {
-    color: #2b2b5f;
-    font-size: 25px;
-    margin-bottom: 2.0rem;
+.text-column, .text-column-2 {
+    display: flex; /* Activa flexbox */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    gap: 3rem; /* Espacio de 3rem entre elementos */
 }
 
-.description-content p {
-    color: #2b2b5f;
-    font-size: 17px;
-    line-height: 1.8;
+.description-content h3, .description-content-2 h5 {
+    color: #2b2b5f; /* Color azul oscuro */
+    font-size: 25px; /* Tamaño de fuente de 25px */
+    margin-bottom: 1.5rem; /* Margen inferior de 1.5rem */
 }
 
-.content-row {
-    grid-column: 1 / -1; 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;  /* AGREGA ESTO */
-    margin-bottom: 2rem; 
-
-}
-
-.text-column {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;  /* Espacio entre los dos textos */
+.description-content p, .description-content-2 p {
+    color: #2b2b5f; /* Color azul oscuro */
+    font-size: 17px; /* Tamaño de fuente de 17px */
+    line-height: 1.8; /* Altura de línea de 1.8 (espaciado entre líneas) */
 }
 
 .img {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.img-1 {
-    display: flex;
-    justify-content: flex-end;
-    height: 700px;
-    margin-right: -260px;
-}
-
-.blue-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 3rem;
-    background-color: #3b3c59 ;
-    border-bottom-left-radius: 100px;
-    border-top-right-radius: 100px;
-    color: #ffff;
-    min-height: 400px;
-    align-items: center;
-    overflow: visible;  /* CAMBIA ESTO - permite que la imagen sobresalga */
-    position: relative;  /* Para controlar el z-index si hace falta */
-    background-image: url(../img/bg-pattern-circles.svg);
-    background-repeat: no-repeat;
-    background-position: left -10.7rem top -33rem;
-}
-
-.img-2 {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;  /* Alinea la imagen abajo */
-    margin-bottom: -700px;
-    margin-top: -700px;  /* La imagen sale hacia ABAJO del contenedor */
-}
-
-.img-2 img {
-    height: 550px;  /* Más grande para que sobresalga */
-    width: auto;
-}
-
-.blue-text {
-    font-size: 20px;
-}
-
-.blue-text h4 {
-    font-size: 30px;
-    margin-bottom: 2rem;
-    
-}
-
-
-
-.description-section-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-}
-
-.description-section-2 h5 {
-    grid-column: 1 / -1; /* El h2 ocupa ambas columnas */
-    color: #2b2b5f;
-    text-align: center;
-    padding-top: 9rem;
-    font-size: 30px;
-    margin-bottom: 4rem;
-}
-
-.description-content-2 {
-    text-align: left;
-}
-
-.description-content-2 h5 {
-    color: #2b2b5f;
-    font-size: 25px;
-}
-
-.description-content-2 p {
-    color: #2b2b5f;
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-.content-row-2 {
-    grid-column: 1 / -1; 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;  /* AGREGA ESTO */
-    margin-bottom: 2rem; 
-
-}
-
-.text-column-2 {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;  /* Espacio entre los dos textos */
+    display: flex; /* Activa flexbox */
+    justify-content: flex-end; /* Alinea el contenido a la derecha */
 }
 
 .img-laptop {
-    display: flex;
-    justify-content: flex-start;
+    display: flex; /* Activa flexbox */
+    justify-content: flex-start; /* Alinea el contenido a la izquierda */
+}
+
+.img-1 {
+    display: flex; /* Activa flexbox */
+    justify-content: flex-end; /* Alinea el contenido a la derecha */
+    height: 700px; /* Altura fija de 700px */
+    margin-right: -260px; /* Margen negativo para que la imagen sobresalga */
 }
 
 .img-3 {
-    display: flex;
-    justify-content: flex-start;
-    height: 700px;
-    margin-left: -244px;
+    display: flex; /* Activa flexbox */
+    justify-content: flex-start; /* Alinea el contenido a la izquierda */
+    height: 700px; /* Altura fija de 700px */
+    margin-left: -244px; /* Margen negativo para que la imagen sobresalga */
+}
+
+.img-1 img, .img-3 img {
+    height: 100%; /* La imagen ocupa el 100% de la altura del contenedor */
+    width: auto; /* El ancho se ajusta automáticamente manteniendo proporción */
+}
+
+/* ==================== SECCIÓN AZUL ==================== */
+.blue-section {
+    display: grid; /* Activa CSS Grid */
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    padding: 3rem; /* Espaciado interno de 3rem */
+    background: #3b3c59 url(../img/bg-pattern-circles.svg) no-repeat left -10.7rem top -33rem; /* Fondo azul oscuro con imagen de patrón posicionada */
+    border-bottom-left-radius: 100px; /* Borde redondeado inferior izquierdo */
+    border-top-right-radius: 100px; /* Borde redondeado superior derecho */
+    color: white; /* Texto blanco */
+    min-height: 400px; /* Altura mínima de 400px */
+    align-items: center; /* Centra verticalmente los elementos del grid */
+}
+
+.img-2 {
+    margin: -700px 0; /* Márgenes negativos superior e inferior para posicionar la imagen */
+}
+
+.img-2 img {
+    height: 550px; /* Altura fija de 550px para la imagen */
+}
+
+.blue-text h4 {
+    font-size: 30px; /* Tamaño de fuente de 30px */
+    margin-bottom: 2rem; /* Margen inferior de 2rem */
+}
+
+.blue-text p {
+    font-size: 20px; /* Tamaño de fuente de 20px */
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+    background: #25252d; /* Fondo gris muy oscuro */
+    padding: 4rem 3rem; /* Espaciado interno: 4rem vertical, 3rem horizontal */
+    color: white; /* Texto blanco */
+    border-top-right-radius: 100px; /* Borde redondeado superior derecho */
+}
+
+.footer-content {
+    display: grid; /* Activa CSS Grid */
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
+    gap: 4rem; /* Espacio de 4rem entre columnas */
+    max-width: 1200px; /* Ancho máximo de 1200px */
+    margin: 0 auto; /* Centra horizontalmente el contenedor */
+}
+
+.footer-column h6 {
+    margin-bottom: 2rem; /* Margen inferior de 2rem */
+    font-size: 1.1rem; /* Tamaño de fuente de 1.1rem */
+}
+
+.footer-column a {
+    color: #c4c4c4; /* Color gris claro para los enlaces */
+    transition: color 0.3s; /* Transición suave del color */
+}
+
+.footer-column a:hover {
+    color: #ff8f70; /* Cambia a naranja al hacer hover */
+}
+
+.footer-column li {
+    margin-bottom: 0.8rem; /* Margen inferior de 0.8rem entre items de lista */
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+/* LAPTOPS PEQUEÑOS (hasta 1024px) */
+@media (max-width: 1024px) { /* Media query para pantallas de máximo 1024px */
+    .nav {
+        padding: 2.5rem 2rem; /* Reduce el padding del nav */
+    }
+
+    .nav-menu {
+        gap: 1.5rem; /* Reduce el espacio entre items del menú */
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Reduce el tamaño del h1 */
+    }
+
+    .description-section, .description-section-2 {
+        padding: 2.5rem 2rem; /* Reduce el padding de las secciones */
+    }
+
+    .img-1 {
+        margin-right: -150px; /* Reduce el margen negativo de la imagen */
+    }
+
+    .img-3 {
+        margin-left: -150px; /* Reduce el margen negativo de la imagen */
+    }
+
+    .blue-section {
+        padding: 2.5rem 2rem; /* Reduce el padding */
+        background-position: left -5rem top -20rem; /* Ajusta la posición de la imagen de fondo */
+    }
+
+    .img-2 {
+        margin: -400px 0; /* Ajusta los márgenes negativos */
+    }
+
+    .img-2 img {
+        height: 400px; /* Reduce la altura de la imagen */
+    }
+
+    footer {
+        padding: 3.5rem 2rem; /* Reduce el padding del footer */
+    }
+
+    .footer-content {
+        gap: 3rem; /* Reduce el espacio entre columnas */
+    }
+}
+
+/* TABLETS (hasta 768px) */
+@media (max-width: 768px) { /* Media query para pantallas de máximo 768px */
+    .nav {
+        padding: 2rem 1.5rem; /* Reduce aún más el padding */
+    }
+
+    h1 {
+        font-size: 2.2rem; /* Reduce más el tamaño del h1 */
+    }
+
+    .hero-content p {
+        font-size: 1.1rem; /* Reduce el tamaño del párrafo */
+    }
+
+    .content-row, .content-row-2 {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+        gap: 3rem; /* Aumenta el espacio vertical entre elementos */
+    }
+
+    .description-section, .description-section-2 {
+        padding: 2rem 1.5rem; /* Reduce el padding */
+    }
+
+    .description-section h2 {
+        margin: 4rem 0 2rem; /* Reduce los márgenes */
+        font-size: 26px; /* Reduce el tamaño de fuente */
+    }
+
+    .description-content h3,
+    .description-content-2 h5 {
+        font-size: 23px; /* Reduce el tamaño de fuente */
+    }
+
+    .description-content, .description-content-2 {
+        text-align: center; /* Centra el texto */
+    }
+
+    .img-1, .img-3 {
+        margin: 0; /* Elimina los márgenes negativos */
+        height: auto; /* Altura automática */
+        width: 100%; /* Ancho del 100% */
+    }
+
+    .img-1 img, .img-3 img {
+        width: 100%; /* Imagen ocupa el 100% del ancho */
+        height: auto; /* Altura automática para mantener proporción */
+        max-width: 600px; /* Ancho máximo de 600px */
+    }
+
+    .blue-section {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+        border-bottom-left-radius: 50px; /* Reduce el radio del borde */
+        border-top-right-radius: 50px; /* Reduce el radio del borde */
+        text-align: center; /* Centra el texto */
+        background-position: center top -10rem; /* Ajusta la posición del fondo */
+        padding: 3rem 1.5rem; /* Ajusta el padding */
+    }
+
+    .img-2 {
+        margin: 2rem 0; /* Cambia los márgenes negativos a positivos */
+    }
+
+    .img-2 img {
+        height: 350px; /* Reduce la altura de la imagen */
+    }
+
+    .blue-text {
+        padding: 2rem 0; /* Añade padding vertical */
+    }
+
+    .blue-text h4 {
+        font-size: 26px; /* Reduce el tamaño de fuente */
+    }
+
+    .blue-text p {
+        font-size: 18px; /* Reduce el tamaño de fuente */
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas */
+        gap: 2rem; /* Reduce el espacio entre columnas */
+    }
+
+    footer {
+        border-top-right-radius: 50px; /* Reduce el radio del borde */
+    }
+}
+
+/* MÓVILES GRANDES (hasta 640px) */
+@media (max-width: 640px) { /* Media query para pantallas de máximo 640px */
+    /* MENÚ HAMBURGUESA VISIBLE */
+    .hamburger {
+        display: flex; /* Muestra el botón hamburguesa */
+    }
+
+    .nav {
+        padding: 2rem 1.5rem; /* Mantiene el padding reducido */
+    }
+
+    .nav-menu {
+        position: fixed; /* Posición fija en la pantalla */
+        top: 0; /* Alineado al top */
+        right: -100%; /* Oculto fuera de la pantalla a la derecha */
+        width: 280px; /* Ancho fijo de 280px */
+        height: 100vh; /* Altura del 100% del viewport */
+        background: white; /* Fondo blanco */
+        flex-direction: column; /* Apila los elementos verticalmente */
+        padding: 6rem 2rem 2rem; /* Padding: 6rem arriba, 2rem laterales y abajo */
+        gap: 1.5rem; /* Espacio de 1.5rem entre elementos */
+        transition: right 0.3s ease; /* Transición suave para deslizar el menú */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1); /* Sombra a la izquierda */
+        z-index: 1000; /* Z-index alto para estar sobre otros elementos */
+        overflow-y: auto; /* Scroll vertical si el contenido es muy largo */
+    }
+
+    /* ABRIR MENÚ CUANDO EL CHECKBOX ESTÁ CHECKED */
+    .menu-toggle:checked ~ .nav-menu {
+        right: 0; /* Desliza el menú hacia la vista (right: 0) */
+    }
+
+    /* OVERLAY OSCURO */
+    .menu-toggle:checked ~ .nav-menu::before {
+        content: ''; /* Crea un pseudo-elemento */
+        position: fixed; /* Posición fija */
+        top: 0; /* Desde arriba */
+        left: 0; /* Desde la izquierda */
+        width: calc(100vw - 280px); /* Ancho: viewport menos el menú */
+        height: 100vh; /* Altura completa del viewport */
+        background: rgba(0,0,0,0.5); /* Fondo negro semi-transparente */
+        z-index: -1; /* Detrás del menú pero sobre el contenido */
+    }
+
+    /* Dropdown dentro del menú móvil */
+    .dropdown > a {
+        color: #2b2b5f; /* Cambia a color azul oscuro */
+        font-weight: 600; /* Peso de fuente semi-negrita */
+        font-size: 18px; /* Tamaño de fuente de 18px */
+        justify-content: center; /* Centra el contenido horizontalmente */
+    }
+
+    .dropdown > a .arrow-icon {
+        filter: brightness(0) saturate(100%) invert(21%) sepia(15%) saturate(2487%) hue-rotate(207deg); /* Filtro CSS para cambiar el color del SVG a azul oscuro */
+    }
+
+    .dropdown-menu {
+        position: static; /* Cambia de absolute a static */
+        opacity: 1; /* Siempre visible */
+        visibility: visible; /* Siempre visible */
+        transform: none; /* Sin transformación */
+        margin-top: 0.5rem; /* Margen superior de 0.5rem */
+        background: #f5f5f5; /* Fondo gris claro */
+        text-align: center; /* Centra el texto */
+    }
+
+    .dropdown-menu a {
+        color: #666; /* Color gris para los enlaces */
+        font-size: 16px; /* Tamaño de fuente de 16px */
+    }
+
+    .dropdown-menu a:hover {
+        color: #ff8f70; /* Color naranja al hacer hover */
+        padding-left: 0; /* Elimina el efecto de desplazamiento */
+    }
+
+    /* Botones de login dentro del menú móvil */
+    .nav-login {
+        display: none; /* Oculta los botones de login del desktop */
+    }
+
+    .nav-login-mobile {
+        display: flex; /* Muestra los botones móviles */
+        flex-direction: column; /* Apila verticalmente */
+        gap: 1rem; /* Espacio de 1rem entre botones */
+        padding-top: 1.5rem; /* Padding superior */
+        border-top: 1px solid #e0e0e0; /* Borde superior gris claro */
+        margin-top: 1rem; /* Margen superior */
+    }
+
+    .nav-login-mobile .btn-login,
+    .nav-login-mobile .btn-signup {
+        width: 100%; /* Botones ocupan el 100% del ancho */
+    }
+
+    .nav-login-mobile .btn-login {
+        border-color: #ff8f70; /* Borde naranja */
+        color: #ff8f70; /* Texto naranja */
+    }
+
+    .nav-login-mobile .btn-signup {
+        background: linear-gradient(135deg, #ff8f70, #ff3d54); /* Gradiente naranja a rojo */
+        color: white; /* Texto blanco */
+    }
+
+    header {
+        min-height: 400px; /* Reduce la altura mínima */
+        border-bottom-left-radius: 50px; /* Reduce el radio del borde */
+    }
+
+    .hero-content {
+        padding: 0 1.5rem; /* Añade padding horizontal */
+        margin-bottom: 3rem; /* Reduce el margen inferior */
+    }
+
+    .hero-buttons {
+        flex-direction: column; /* Apila los botones verticalmente */
+        width: 100%; /* Ocupa el 100% del ancho */
+    }
+
+    .btn-star, .btn-learn {
+        width: 100%; /* Botones ocupan el 100% del ancho */
+        max-width: 250px; /* Ancho máximo de 250px */
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr; /* Una sola columna */
+        text-align: center; /* Centra el texto */
+    }
+
+    .logo {
+        justify-content: center; /* Centra el logo */
+    }
+}
+
+/* MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) { /* Media query para pantallas de máximo 480px */
+    h1 { 
+        font-size: 1.8rem; /* Reduce más el tamaño del h1 */
+    }
+
+    .hero-content p {
+        font-size: 1rem; /* Reduce el tamaño del párrafo */
+    }
+    
+    .description-section h2 {
+        font-size: 22px; /* Reduce el tamaño del h2 */
+    }
+
+    .blue-text h4,
+    .description-content h3,
+    .description-content-2 h5 {
+        font-size: 20px; /* Reduce el tamaño de los títulos */
+    }
+
+    .description-content p,
+    .description-content-2 p,
+    .blue-text p {
+        font-size: 15px; /* Reduce el tamaño de los párrafos */
+    }
+
+    .img-2 img {
+        height: 280px; /* Reduce más la altura de la imagen */
+    }
 }
