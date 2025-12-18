@@ -212,3 +212,66 @@ h1 {
     gap: 8rem;
     justify-content: center;
 }
+
+
+.hero-3 {
+   display: flex;
+   justify-content: center;
+
+}
+
+.hero-content-3 h3 {
+    font-weight: 600;
+    font-size: 36px;
+    padding: 30px;
+    padding-bottom: 0;
+    color: #4D4D4D;
+    margin-left: 83px;
+}
+
+.hero-content-3 p {
+    font-weight: 400;
+    font-size: 16px;
+    color: #4D4D4D;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.manage {
+    display: grid; /* Activa CSS Grid */
+    grid-template-columns: 1fr 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: 1rem; /* Espacio de 2rem entre columnas */
+    align-items: center; /* Centra verticalmente los elementos del grid */
+    background-color: #ffffff;
+}
+
+.single-system {
+    flex: 1; /* Ocupa todo el espacio disponible */
+    display: flex; /* Activa flexbox */
+    align-items: flex-start; /* Centra verticalmente el contenido */
+    justify-content: flex-start; /* Centra horizontalmente el contenido */
+    margin-left: 150px;
+    margin-top: 150px;
+    margin-right: 150px;
+}
+
+.single-system-content {
+    text-align: center; /* Centra el texto */
+    margin-bottom: 10rem; /* Margen inferior de 10rem */
+}
+
+h4 {
+    font-size: 3rem; /* Tamaño de fuente de 3rem (48px aprox) */
+    font-weight: 600; /* Peso de fuente semi-negrita */
+    margin-bottom: 2rem; /* Margen inferior de 2rem */
+    color: #4D4D4D;
+}
+
+.single-system-content p {
+    font-size: 3rem; 
+    font-weight: 500;
+    margin-bottom: 2rem; /* Margen inferior de 2rem */
+    color: #717171;
+}
