@@ -1,105 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Declaración del tipo de documento HTML5 -->
+<html lang="en"> <!-- Elemento raíz, lang="en" indica que el contenido está en inglés -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- META TAGS - Información sobre el documento -->
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres UTF-8 (soporta acentos y símbolos) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace la página responsive, adapta el ancho al dispositivo -->
+    
+    <!-- TÍTULO - Aparece en la pestaña del navegador -->
     <title>Blogr Landing Page</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- LINK A HOJA DE ESTILOS CSS -->
+    <link rel="stylesheet" href="assets/css/style.css"> <!-- Conecta el archivo CSS para dar estilos a la página -->
 </head>
-<body>
+<body> <!-- Cuerpo del documento, contiene todo el contenido visible -->
     
-    <header>
-      <nav class="nav">
-    <div class="logo">
-        <img src="assets/img/logo.svg" alt="imagen logo">
-    </div>
-
-    <!-- CHECKBOX OCULTO PARA CONTROLAR EL MENÚ -->
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    
-    <!-- BOTÓN HAMBURGUESA (LABEL) -->
-    <label for="menu-toggle" class="hamburger">
-        <span class="hamburger-icon"></span>
-    </label>
-
-    <ul class="nav-menu">
-        <li class="dropdown">
-            <a href="#product">Product
-                <img src="assets/img/icon-arrow-light.svg" alt="" class="arrow-icon">
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#marketplace">Marketplace</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#integrations">Integrations</a></li>
-            </ul>
-        </li>
+    <!-- ==================== HEADER - Encabezado de la página ==================== -->
+    <header> <!-- Sección superior con fondo degradado y navegación -->
+      
+      <!-- NAVEGACIÓN PRINCIPAL -->
+      <nav class="nav"> <!-- Barra de navegación con clase "nav" para estilos -->
         
-        <li class="dropdown">
-            <a href="#company">Company
-                <img src="assets/img/icon-arrow-light.svg" alt="" class="arrow-icon">
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#careers">Careers</a></li>
-            </ul>
-        </li>
-        
-        <li class="dropdown">
-            <a href="#connect">Connect
-                <img src="assets/img/icon-arrow-light.svg" alt="" class="arrow-icon">
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#newsletter">Newsletter</a></li>
-                <li><a href="#linkedin">LinkedIn</a></li>
-            </ul>
-        </li>
+        <!-- LOGO -->
+        <div class="logo"> <!-- Contenedor del logo -->
+            <img src="assets/img/logo.svg" alt="imagen logo"> <!-- Imagen del logo, "alt" describe la imagen para accesibilidad -->
+        </div>
 
-        <!-- Botones dentro del menú móvil -->
-        <div class="nav-login-mobile">
+        <!-- CHECKBOX OCULTO PARA CONTROLAR EL MENÚ MÓVIL -->
+        <!-- Este checkbox se usa para abrir/cerrar el menú hamburguesa sin JavaScript -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle"> <!-- Input tipo checkbox oculto con CSS -->
+        
+        <!-- BOTÓN HAMBURGUESA (LABEL que activa el checkbox) -->
+        <!-- Al hacer click en el label, activa/desactiva el checkbox -->
+        <label for="menu-toggle" class="hamburger"> <!-- Label conectado al checkbox mediante "for" -->
+            <span class="hamburger-icon"></span> <!-- Span que se estiliza como las 3 líneas del hamburguesa -->
+        </label>
+
+        <!-- MENÚ DE NAVEGACIÓN -->
+        <ul class="nav-menu"> <!-- Lista desordenada que contiene los items del menú -->
+            
+            <!-- DROPDOWN 1 - PRODUCT -->
+            <li class="dropdown"> <!-- Item de lista con clase dropdown (menú desplegable) -->
+                <a href="#product">Product <!-- Enlace principal del dropdown -->
+                    <img src="assets/img/icon-arrow-light.svg" alt="" class="arrow-icon"> <!-- Icono de flecha hacia abajo -->
+                </a>
+                <ul class="dropdown-menu"> <!-- Submenú que aparece al hacer hover -->
+                    <li><a href="#overview">Overview</a></li> <!-- Cada opción del submenú -->
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#marketplace">Marketplace</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#integrations">Integrations</a></li>
+                </ul>
+            </li>
+            
+            <!-- DROPDOWN 2 - COMPANY -->
+            <li class="dropdown">
+                <a href="#company">Company
+                    <img src="assets/img/icon-arrow-light.svg" alt="" class="arrow-icon">
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                </ul>
+            </li>
+            
+            <!-- DROPDOWN 3 - CONNECT -->
+            <li class="dropdown">
+                <a href="#connect">Connect
+                    <img src="assets/img/icon-arrow-light.svg" alt="" class="arrow-icon">
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#newsletter">Newsletter</a></li>
+                    <li><a href="#linkedin">LinkedIn</a></li>
+                </ul>
+            </li>
+
+            <!-- BOTONES DENTRO DEL MENÚ MÓVIL -->
+            <!-- Este div solo es visible en móvil, dentro del menú hamburguesa -->
+            <div class="nav-login-mobile">
+                <button class="btn-login">Login</button> <!-- Botón de inicio de sesión -->
+                <button class="btn-signup">Sign Up</button> <!-- Botón de registro -->
+            </div>
+        </ul>
+
+        <!-- BOTONES DE LOGIN PARA DESKTOP -->
+        <!-- Estos botones son visibles en pantallas grandes, ocultos en móvil -->
+        <div class="nav-login">
             <button class="btn-login">Login</button>
             <button class="btn-signup">Sign Up</button>
         </div>
-    </ul>
+    </nav>
 
-    <div class="nav-login">
-        <button class="btn-login">Login</button>
-        <button class="btn-signup">Sign Up</button>
-    </div>
-</nav>
-
-        <div class="hero">
-            <div class="hero-content">
-                <h1>A modern publishing platform</h1>
-                <p>Grow your audience and build your online brand</p>
-                <div class="hero-buttons">
-                    <button class="btn-star">Start for Free</button>
-                    <button class="btn-learn">Learn More</button>
+        <!-- SECCIÓN HERO - Contenido principal del header -->
+        <div class="hero"> <!-- Contenedor del contenido hero -->
+            <div class="hero-content"> <!-- Contenedor interno centrado -->
+                <h1>A modern publishing platform</h1> <!-- Título principal H1 (más importante para SEO) -->
+                <p>Grow your audience and build your online brand</p> <!-- Párrafo descriptivo -->
+                
+                <!-- BOTONES DE ACCIÓN -->
+                <div class="hero-buttons"> <!-- Contenedor de botones -->
+                    <button class="btn-star">Start for Free</button> <!-- Botón de call-to-action principal -->
+                    <button class="btn-learn">Learn More</button> <!-- Botón secundario -->
                 </div>
             </div>
         </div>
     </header>
 
-    <main>
-        <section class="description-section">
-            <h2>Designed for the Future</h2>
+    <!-- ==================== MAIN - Contenido principal de la página ==================== -->
+    <main> <!-- Contenedor principal del contenido -->
+        
+        <!-- SECCIÓN 1 - DESIGNED FOR THE FUTURE -->
+        <section class="description-section"> <!-- Sección con clase para estilos -->
+            <h2>Designed for the Future</h2> <!-- Título de la sección H2 (segundo nivel de importancia) -->
 
-            <div class="content-row">
+            <!-- CONTENEDOR CON 2 COLUMNAS (texto e imagen) -->
+            <div class="content-row"> <!-- Contenedor en grid con 2 columnas -->
 
-                <div class="text-column">
-                    <article class="description-content">
-                        <h3>Introducing an extensible editor</h3>
+                <!-- COLUMNA DE TEXTO -->
+                <div class="text-column"> <!-- Primera columna con artículos de texto -->
+                    
+                    <!-- ARTÍCULO 1 -->
+                    <article class="description-content"> <!-- Article es semántico para contenido independiente -->
+                        <h3>Introducing an extensible editor</h3> <!-- Subtítulo H3 -->
                         <p>Blogr features an exceedingly intuitive interface which lets you focus
                             on one thing: creating content. The editor supports management of
                             multiple blogs and allows easy manipulation of embeds such as images,
                             videos, and Markdown. Extensibility with plugins and themes provide
-                            easy ways to add functionality or change the look of a blog.</p>
+                            easy ways to add functionality or change the look of a blog.</p> <!-- Párrafo de descripción -->
                     </article>
 
+                    <!-- ARTÍCULO 2 -->
                     <article class="description-content">
                         <h3>Robust content management</h3>
                         <p>Flexible content management enables users to easily move through posts. 
@@ -108,71 +139,83 @@
                     </article>
                 </div>
 
-          
-                <div class="img">
-                    <div class="img-1">
-                        <img src="assets/img/illustration-editor-desktop.svg" alt="imagen logo">
+                <!-- COLUMNA DE IMAGEN -->
+                <div class="img"> <!-- Contenedor de imagen alineado a la derecha -->
+                    <div class="img-1"> <!-- Contenedor interno con altura específica -->
+                        <img src="assets/img/illustration-editor-desktop.svg" alt="imagen logo"> <!-- Imagen ilustrativa -->
                     </div>
                 </div>
             </div>
         </section>
 
-    <section class="blue-section">
+        <!-- SECCIÓN 2 - BLUE SECTION (Infraestructura) -->
+        <section class="blue-section"> <!-- Sección con fondo azul oscuro y patrón -->
 
-    <div class="img-2">
-        <img src="assets/img/illustration-phones.svg" alt="phones illustration">
-    </div>
+            <!-- IMAGEN DE TELÉFONOS -->
+            <div class="img-2"> <!-- Contenedor de imagen con márgenes negativos -->
+                <img src="assets/img/illustration-phones.svg" alt="phones illustration"> <!-- Ilustración de teléfonos -->
+            </div>
 
-    
-    <div class="blue-text">
-        <h4>State of the Art Infrastructure</h4>
-        <p>With reliability and speed in mind, worldwide data centers provide the backbone for
-        ultra-fast connectivity. This ensures your site will load instantly, no matter where your 
-        readers are, keeping your site competitive.</p>
-    </div>
-</section>
+            <!-- TEXTO DE LA SECCIÓN AZUL -->
+            <div class="blue-text"> <!-- Contenedor de texto -->
+                <h4>State of the Art Infrastructure</h4> <!-- Título H4 -->
+                <p>With reliability and speed in mind, worldwide data centers provide the backbone for
+                ultra-fast connectivity. This ensures your site will load instantly, no matter where your 
+                readers are, keeping your site competitive.</p> <!-- Descripción -->
+            </div>
+        </section>
 
+        <!-- SECCIÓN 3 - LAPTOP SECTION (Free, open, simple) -->
+        <section class="description-section-2"> <!-- Segunda sección de descripción -->
+            
+            <!-- CONTENEDOR CON 2 COLUMNAS (imagen y texto) -->
+            <div class="content-row-2"> <!-- Grid con 2 columnas, orden inverso a la sección 1 -->
 
-<section class="description-section-2">
-            <div class="content-row-2">
-
-                <div class="img-laptop">
-                    <div class="img-3">
-                        <img src="assets/img/illustration-laptop-desktop.svg" alt="imagen logo">
+                <!-- COLUMNA DE IMAGEN (lado izquierdo) -->
+                <div class="img-laptop"> <!-- Contenedor de imagen alineado a la izquierda -->
+                    <div class="img-3"> <!-- Contenedor interno con altura específica -->
+                        <img src="assets/img/illustration-laptop-desktop.svg" alt="imagen logo"> <!-- Ilustración de laptop -->
                     </div>
                 </div>
 
-                <div class="text-column-2">
+                <!-- COLUMNA DE TEXTO (lado derecho) -->
+                <div class="text-column-2"> <!-- Columna con artículos de texto -->
+                    
+                    <!-- ARTÍCULO 1 -->
                     <article class="description-content-2">
-                        <h5>Free, open, simple</h5>
+                        <h5>Free, open, simple</h5> <!-- Título H5 -->
                         <p>Blogr is a free and open source application backed by a large community of helpful developers. 
                             It supports features such as code syntax highlighting, RSS feeds, social media integration, 
                             third-party commenting tools, and works seamlessly with Google Analytics. 
                             The architecture is clean and is relatively easy to learn.</p>
                     </article>
 
+                    <!-- ARTÍCULO 2 -->
                     <article class="description-content-2">
                         <h5>Batteries included. </h5>
                         <p>We built a simple and straightforward CLI tool that makes customization and deployment a breeze, 
                             but capable of producing even the most complicated sites.</p>
                     </article>
                 </div>
-
-          
-                
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="logo">
+    <!-- ==================== FOOTER - Pie de página ==================== -->
+    <footer> <!-- Elemento semántico para el pie de página -->
+        
+        <!-- CONTENIDO DEL FOOTER EN GRID -->
+        <div class="footer-content"> <!-- Grid con 4 columnas -->
+            
+            <!-- COLUMNA 1 - LOGO -->
+            <div class="logo"> <!-- Contenedor del logo -->
                 <img src="assets/img/logo.svg" alt="imagen logo">
             </div>
 
-            <div class="footer-column">
-                <h6>Product</h6>
-                <ul>
+            <!-- COLUMNA 2 - PRODUCT -->
+            <div class="footer-column"> <!-- Columna del footer -->
+                <h6>Product</h6> <!-- Título de la columna H6 -->
+                <ul> <!-- Lista de enlaces -->
                     <li><a href="#">Overview</a></li>
                     <li><a href="#">Pricing</a></li>
                     <li><a href="#">Marketplace</a></li>
@@ -181,6 +224,7 @@
                 </ul>
             </div>
 
+            <!-- COLUMNA 3 - COMPANY -->
             <div class="footer-column">
                 <h6>Company</h6>
                 <ul>
@@ -191,6 +235,7 @@
                 </ul>
             </div>
 
+            <!-- COLUMNA 4 - CONNECT -->
             <div class="footer-column">
                 <h6>Connect</h6>
                 <ul>
@@ -202,5 +247,5 @@
         </div>
     </footer>
 
-</body>
-</html>
+</body> <!-- Cierre del body -->
+</html> <!-- Cierre del documento HTML -->

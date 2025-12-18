@@ -17,6 +17,15 @@ Móviles pequeños (≤480px)
 
 # 📚 Guía de CSS para el Examen - Conceptos Clave
 
+✅ Conceptos fundamentales: Reset, Flexbox, Grid, Posicionamiento
+✅ Efectos visuales: Transiciones, animaciones, gradientes, sombras
+✅ Técnicas avanzadas: Menú hamburguesa, dropdowns, responsive design
+✅ Selectores CSS: Todos los tipos que necesitas conocer
+✅ Unidades y medidas: px, rem, %, vh, vw
+✅ Trucos útiles: Centrado, truncado de texto, aspect ratio
+✅ Consejos para el examen: Tips importantes para recordar
+✅ Patrones comunes: Ejemplos prácticos del proyecto
+
 ## 🎯 1. RESET Y BOX-SIZING
 
 ```css
