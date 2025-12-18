@@ -275,3 +275,60 @@ h4 {
     margin-bottom: 2rem; /* Margen inferior de 2rem */
     color: #717171;
 }
+
+.gallery-img-2 img{
+    display: grid;
+    margin-top: -60px;
+    position: relative;
+}
+
+
+
+
+.description-section {
+    padding: 3rem; /* Espaciado interno de 3rem en todos los lados */
+}
+
+.description-section h5 {
+    color: #4D4D4D; /* Color azul oscuro */
+    text-align: center; /* Centra el texto */
+    font-size: 30px; /* Tamaño de fuente de 30px */
+    margin: 9rem 0 1rem; /* Margen superior 9rem, inferior 4rem */
+
+}
+
+.description-section p{
+    color: #717171;
+
+}
+
+.content-row{
+    display: grid; /* Activa CSS Grid */
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: 2rem; /* Espacio de 2rem entre columnas */
+    align-items: center; /* Centra verticalmente los elementos del grid */
+}
+
+
+.btn-learn-more{
+    height: 50px; /* Altura fija de 50px para todos los botones */
+    width: 100px; /* Ancho base de 100px */
+    border-radius: 8px; /* Bordes muy redondeados (botón tipo píldora) */
+    font-weight: 700; /* Texto en negrita */
+    cursor: pointer; /* Cambia el cursor a pointer */
+    border: none; /* Sin borde por defecto */
+    transition: all 0.3s; /* Transición suave para todas las propiedades */
+    color: #ffffff;
+    background-color: #388E3B;
+}
+
+.btn-learn-more{
+        width: 100%; /* Botones ocupan el 100% del ancho */
+        max-width: 250px; /* Ancho máximo de 250px */
+        
+    }
+
+.btn-learn-more:hover{
+    color: #ffffff;
+    transform: translateY(-10px);
+}
